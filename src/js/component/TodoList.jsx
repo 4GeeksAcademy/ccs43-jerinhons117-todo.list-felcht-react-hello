@@ -37,10 +37,13 @@ const TodoList = () => {
                     <div>
                         <div>
                         {
-                            taskList.map((task, index) => {
-                                return <p key={index} className="list"> {task} <i className="fa-solid fa-x" onClick={() => setTaskList(taskList.filter((t, currentIndex ) => index != currentIndex))}></i></p>
-                            })
-                            
+                            taskList.length == 0 ? (
+                                <p> there is no task to add</p>
+                            ):(
+                                taskList.map((task, index) => {
+                                    return <p key={index} className="list"> {task} {""} <i className="fa-solid fa-x equis" onClick={() => setTaskList(taskList.filter((t, currentIndex ) => index != currentIndex))}></i></p>
+                                })
+                            )
                         }
                         </div>
                         <div className="number_list">

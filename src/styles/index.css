@@ -59,14 +59,27 @@ input{
     justify-content: space-between;
     align-items: center;
     border: 1px solid rgb(34, 34, 34);
+    color: rgb(0, 0, 0);
     border-radius: 10px;
-    color: rgb(20, 20, 68);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.63);
+    
+}
+.equis{
+    color: transparent;
+    
 }
 
-i{
+.list:hover > .equis{
     color: rgb(100, 0, 0);
+    
 }
+
+.equis:hover{
+    font-size: 20px;
+    transition: 0.5s;
+}
+
+
 
 .number_list{
     margin: 3px;
