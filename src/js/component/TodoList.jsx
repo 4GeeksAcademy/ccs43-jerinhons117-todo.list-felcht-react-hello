@@ -207,7 +207,7 @@ const TodoList = () => {
                         </div>
                         <div className="number_list">
                             <p >
-                                {taskList.length} task
+                                {taskList.length - 1} task
                                 
                             </p>
                         </div>
