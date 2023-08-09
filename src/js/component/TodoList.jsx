@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 
 const TodoList = () => {
     
-    const API_URL = "https://assets.breatheco.de/apis/fake/todos/user/jerinhons117";
+    const API_URL = "https://playground.4geeks.com/apis/fake/todos/user/jerinhons117";
     const [task, setTask] = useState("");
     const [taskList, setTaskList] = useState([]);
     const [error, setError] = useState(false)
@@ -24,6 +24,7 @@ const TodoList = () => {
             setError(false);
         }
     }
+    
 
     /*const resetlist = () => {
         setTaskList("");
@@ -118,7 +119,7 @@ const TodoList = () => {
                 body:JSON.stringify([])
             })
             console.log(response);
-            if(response.status !=200){
+            if(response.status !=201){
                 console.log("hay un error en el POST")
                 return;
             }
@@ -133,7 +134,7 @@ const TodoList = () => {
     }
 
 
-    async function deleteToDos(deleteTask){
+    async function deleteToDos(){
         try{
             const response = await fetch(API_URL,{
                 method:"DELETE",
@@ -142,7 +143,7 @@ const TodoList = () => {
                 },
             });
             console.log(response)
-            if (response.status !=200){
+            if (response.status !=201){
                 console.log("hay un error en el DELETE")
                 return;
             }
@@ -154,6 +155,7 @@ const TodoList = () => {
         }
     }
 
+    
     useEffect(() => {
         console.log("inicia la aplicacion") 
         getToDos()
@@ -181,19 +183,18 @@ const TodoList = () => {
                                     return (
                                         <p 
                                             key={index} 
-                                            className="list"
+                                            className="list"        
                                         > 
-                                            {task.label} {""} 
+                                                {task.label}
                                             <i 
                                                 className="fa-solid fa-x equis" 
                                                 onClick={() =>{
                                                     const newToDo = taskList.filter((t, currentIndex ) => index != currentIndex)
+
                                                     if (newToDo.length == 0){
                                                         deleteToDos()
-                                                        return;
-                                                        
+                                                        return;    
                                                     }
-                                                    
                                                     trashToDo(newToDo);
                                                 }}
                                             ></i>
@@ -205,11 +206,16 @@ const TodoList = () => {
                         }
                         </div>
                         <div className="number_list">
-                            <p>{taskList.length} task</p>
+                            <p >
+                                {taskList.length} task
+                                
+                            </p>
                         </div>
-                    <button className="boton" onClick={deleteToDos}
+                    <button className="boton" onClick={() => {
+                        deleteToDos()
+                    }}
                     >
-                        refresh
+                        Refresh
                     </button>
 
                     </div>
